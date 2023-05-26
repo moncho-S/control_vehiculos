@@ -3,6 +3,24 @@ class Vehiculo():
     modelo = ''
     numeroRuedas = 0
 
+    def get_marca(self):
+        return self.marca
+
+    def get_modelo(self):
+        return self.modelo
+
+    def get_numeroRuedas(self):
+        return self.numeroRuedas
+
+    def set_marca(self, marca):
+        self.marca = marca
+
+    def set_modelo(self, modelo):
+        self.modelo = modelo
+
+    def set_numeroRuedas(self, numeroRuedas):
+        self.numeroRuedas = numeroRuedas
+
     def __str__(self):
         return f"Marca {self.marca}, Modelo {self.modelo}, {str(self.numeroRuedas)},ruedas"
 
