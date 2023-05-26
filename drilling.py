@@ -1,52 +1,6 @@
 import json
 import csv
-
-
-class Vehiculo():
-    marca = ''
-    modelo = ''
-    numeroRuedas = 0
-
-
-class Automovil(Vehiculo):
-    velocidad = ""
-    cilindrada = ""
-
-
-class Particular(Automovil):
-    def __init__(self, marca, modelo, numeroRuedas, velocidad, cilindrada, numeroPuestos):
-        self.marca = marca
-        self.modelo = modelo
-        self.numeroRuedas = numeroRuedas
-        self.velocidad = velocidad
-        self.cilindrada = cilindrada
-        self.numeroPuestos = numeroPuestos
-
-
-class Carga(Automovil):
-    def __init__(self, marca, modelo, numeroRuedas, velocidad, cilindrada, peso):
-        self.marca = marca
-        self.modelo = modelo
-        self.numeroRuedas = numeroRuedas
-        self.velocidad = velocidad
-        self.cilindrada = cilindrada
-        self.peso = peso
-
-
-class Bicicleta(Vehiculo):
-    def __init__(self, marca, modelo, numeroRuedas, tipo):
-        self.marca = marca
-        self.modelo = modelo
-        self.numeroRuedas = numeroRuedas
-        self.tipo = tipo
-
-
-class Motocicleta(Bicicleta):
-    def __init__(self, marca, modelo, numeroRuedas, tipo, motor, cuadro, numeroRadios):
-        Bicicleta.__init__(self, marca, modelo, numeroRuedas, tipo)
-        self.numeroRadios = numeroRadios
-        self.cuadro = cuadro
-        self.motor = motor
+from clases import *
 
 
 def guardar_datos_csv(objetos):
@@ -70,7 +24,7 @@ def leer_datos_csv():
             vehiculos.append(vehiculo)
         archivo.close()
         for vehiculo in vehiculos:
-            print("Lista de Vehiculos", vehiculo[0][17:-2])
+            print("Lista de Vehiculos", vehiculo[0][15:-2])
             print(vehiculo[1], "\n")
     except:
         print("salta la excepcion en metodo leer")
@@ -93,8 +47,9 @@ for i in range(1, cantidadVehiculos+1):
 
 print("Imprimiendo por pantalla los vehiculos")
 for i in range(1, len(vehiculos)):
-    print("Datos del vehiculo", i, ": Marca", vehiculos[i].marca, ", Modelo", vehiculos[i].modelo, ",", str(
-        vehiculos[i].numeroRuedas), "ruedas", vehiculos[i].velocidad, "km/h,", vehiculos[i].cilindrada, "cc")
+    print(vehiculos[i].__str__())
+    # print("Datos del vehiculo", i, ": Marca", vehiculos[i].marca, ", Modelo", vehiculos[i].modelo, ",", str(
+    #    vehiculos[i].numeroRuedas), "ruedas", vehiculos[i].velocidad, "km/h,", vehiculos[i].cilindrada, "cc")
 
 print("################## Fin Parte 1 ###############\n")
 print("################## Parte 2 ###############")
@@ -108,16 +63,23 @@ print("Marca", carga.marca, ", Modelo", carga.modelo, ",", str(carga.numeroRueda
 bicicleta = Bicicleta("Shimano", "MT Ranger", 2, "Carrera")
 print("Marca", bicicleta.marca, ", Modelo", bicicleta.modelo, ",",
       str(bicicleta.numeroRuedas), "ruedas Tipo: ", bicicleta.tipo)
-motocicleta = Motocicleta("BMW", "F800s", 2, "Deportiva", "2T", "Doble Viga", 21)
+motocicleta = Motocicleta(
+    "BMW", "F800s", 2, "Deportiva", "2T", "Doble Viga", 21)
 print("Marca", motocicleta.marca, ", Modelo", motocicleta.modelo, ",", str(motocicleta.numeroRuedas), "ruedas Tipo:",
-      motocicleta.tipo, "Motor:", motocicleta.motor, ", Cuadro:", motocicleta.cuadro, ",Nro Radios", motocicleta.numeroRadios,"\n")
+      motocicleta.tipo, "Motor:", motocicleta.motor, ", Cuadro:", motocicleta.cuadro, ",Nro Radios", motocicleta.numeroRadios, "\n")
 
-print("Motocicleta es instancia con relación a Vehículo: ",isinstance(motocicleta, Vehiculo))
-print("Motocicleta es instancia con relación a Automovil: ",isinstance(motocicleta, Automovil))
-print("Motocicleta es instancia con relación a Vehículo particular: ",isinstance(motocicleta, Particular))
-print("Motocicleta es instancia con relación a Vehículo de carga: ",isinstance(motocicleta, Carga))
-print("Motocicleta es instancia con relación a Bicicleta: ",isinstance(motocicleta, Bicicleta))
-print("Motocicleta es instancia con relación a Motocicleta: ",isinstance(motocicleta, Motocicleta))
+print("Motocicleta es instancia con relación a Vehículo: ",
+      isinstance(motocicleta, Vehiculo))
+print("Motocicleta es instancia con relación a Automovil: ",
+      isinstance(motocicleta, Automovil))
+print("Motocicleta es instancia con relación a Vehículo particular: ",
+      isinstance(motocicleta, Particular))
+print("Motocicleta es instancia con relación a Vehículo de carga: ",
+      isinstance(motocicleta, Carga))
+print("Motocicleta es instancia con relación a Bicicleta: ",
+      isinstance(motocicleta, Bicicleta))
+print("Motocicleta es instancia con relación a Motocicleta: ",
+      isinstance(motocicleta, Motocicleta))
 
 print("################## Fin Parte 2 ###############\n")
 print("################## Parte 3 ###############")
